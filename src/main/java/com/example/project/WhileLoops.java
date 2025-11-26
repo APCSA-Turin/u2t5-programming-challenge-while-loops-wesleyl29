@@ -57,8 +57,12 @@ public class WhileLoops {
     * digitSum(199) -> 19 // 1 + 9 + 9
     */
    public static int digitSum(int n) {
-    return 0;
-    
+    int c = 0;
+    while (n>0){
+        c+=n%10;
+        n=n/10;
+    }
+    return c;
    }
 
 
@@ -82,10 +86,14 @@ public class WhileLoops {
     * // can't subtract without going negative
     */
    public static int countDownBy(int start, int step) {
-        while ((start-step)>=0){
-            start-=step;
-        }
-       return start;
+    if (step<=0){
+        return start;
+    }
+    while (start>=step){
+        start-=step;
+    }
+    return start;    
+
    }
 
 
@@ -120,7 +128,12 @@ public class WhileLoops {
        if (startBalance>=goalBalance){
         return 0;
        }
-       return -1;
+       int weeks = 0;
+       while (startBalance<goalBalance){
+        startBalance+=weeklyDeposit;
+        weeks++;
+       }
+       return weeks;
    }
 
 
@@ -158,7 +171,7 @@ public class WhileLoops {
         return 0;
        }
        int minute = 0;
-       while (startPercent>=0){
+       while (startPercent>0){
         startPercent-=perMinuteUse;
         minute++;
        }
